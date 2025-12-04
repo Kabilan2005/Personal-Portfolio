@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KABILAN M — Portfolio</title>
+  <meta name="description" content="Personal portfolio">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+  <!-- BACKGROUND LAYERS (must be FIRST under body) -->
+  <div class="background-effects" aria-hidden="true">
+    <canvas id="starfield"></canvas>
+    <div class="nebula-bg"></div>
+    <div class="sun-core"></div>
+    <div class="cosmic-waves"></div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header class="nav glass">
+    <div class="container">
+      <a class="brand" href="#">KABILAN M</a>
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main class="hero">
+    <div class="container hero-inner">
+
+      <div class="hero-left">
+        <h1 class="neon">KABILAN M</h1>
+        <p class="role">Full Stack Developer • Data Engineer • CSE Student</p>
+
+        <p class="desc">
+          I’m a Devoted engineer dedicated to solving real-world problems for everyday people, 
+          using my skills in Software Development, AI, Internet of Things and the hunger 
+          to improve quality of living. With relentless commitment, I transform challenges 
+          into opportunities, valuing every resource and opportunity I encounter. 
+          My love for sports and supporting underdogs fuels my drive to champion 
+          resilience and innovation.
+        </p>
+
+        <div class="interests">
+          <span class="pill">Web Development</span>
+          <span class="pill">AI / ML</span>
+          <span class="pill">Cloud & DevOps</span>
+          <span class="pill">Data Science</span>
+          <span class="pill">Data Engineering</span>
+        </div>
+
+        <div class="ctas">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn ghost" href="#contact">Download Resume</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="avatar glass">
+          <div class="avatar-inner">PHOTO</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="scroll-cue">Scroll</div>
+  </main>
+
+  <!-- STARFIELD JS -->
+  <script>
+    (function(){
+      const canvas = document.getElementById('starfield');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+      let w, h, dpi = window.devicePixelRatio || 1;
+
+      function resize(){
+        w = canvas.width = Math.floor(window.innerWidth * dpi);
+        h = canvas.height = Math.floor(window.innerHeight * dpi);
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        initStars();
+      }
+
+      function initStars(){
+        stars = [];
+        const count = Math.floor((w*h) / 80000);
+        for(let i=0;i<count;i++){
+          stars.push({
+            x: Math.random()*w,
+            y: Math.random()*h,
+            z: Math.random()*0.8+0.2,
+            dx: (Math.random()-0.5)*0.02,
+            size: Math.random()*1.2+0.3
+          });
+        }
+      }
+
+      function render(){
+        ctx.clearRect(0,0,w,h);
+        for(const s of stars){
+          s.x += s.dx * (s.z*6);
+          s.y += (Math.sin((s.x+s.y)/1000))*0.1;
+
+          if(s.x > w+50) s.x = -50;
+          if(s.x < -50) s.x = w+50;
+          if(s.y > h+50) s.y = -50;
+          if(s.y < -50) s.y = h+50;
+
+          const alpha = 0.6 * s.z;
+          const size = s.size * s.z * dpi;
+
+          ctx.beginPath();
+          ctx.fillStyle = 'rgba(255,255,255,'+alpha+')';
+          ctx.arc(s.x, s.y, size, 0, Math.PI*2);
+          ctx.fill();
+        }
+        requestAnimationFrame(render);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      render();
+    })();
+  </script>
+
+</body>
+</html>
