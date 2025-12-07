@@ -155,7 +155,6 @@
   opacity: 0.9;
 }
 
-/* Decorative empty fields (same on both cards) */
 .decorative-fields {
   display: flex;
   flex-direction: column;
