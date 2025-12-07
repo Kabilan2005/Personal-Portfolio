@@ -1,0 +1,207 @@
+.contact-page {
+  min-height: 100vh;
+  padding: 140px 0 120px;
+  position: relative;
+  z-index: 10;
+}
+
+.page-title {
+  font-size: 56px;
+  text-align: center;
+  margin: 0 0 16px;
+  letter-spacing: 0.6px;
+}
+
+.contact-subtitle {
+  text-align: center;
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 720px;
+  margin: 0 auto 70px;
+  line-height: 1.6;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;           
+}
+
+.contact-card {
+  background: var(--glass);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  transition: all 0.45s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;                   
+}
+
+.contact-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 24px 60px rgba(0,200,255,0.18);
+  border-color: rgba(0,200,255,0.25);
+}
+
+.card-title {
+  font-size: 26px;
+  margin: 0 0 32px;
+  color: var(--neon-blue);
+  text-shadow: 0 0 15px rgba(0,200,255,0.4);
+  text-align: center;
+}
+
+
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;               
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--muted);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  background: rgba(0,200,255,0.12);
+  color: white;
+  transform: translateX(8px);
+}
+
+.icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.1);
+}
+
+.icon-wrapper svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.email    .icon-wrapper { background: rgba(0,200,255,0.2);    color: var(--neon-blue); }
+.phone    .icon-wrapper { background: rgba(163,107,255,0.2);  color: var(--neon-purple); }
+.linkedin .icon-wrapper { background: rgba(10,102,194,0.2);   color: #0A66C2; }
+.github   .icon-wrapper { background: rgba(255,255,255,0.15); color: white; }
+
+.contact-item strong {
+  font-size: 15px;
+  color: white;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.contact-item span {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.whatsapp-symmetric {
+  margin-bottom: 20px;
+}
+
+.whatsapp-symmetric-btn {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  background: rgba(37,211,102,0.15);
+  border-radius: 14px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-symmetric-btn:hover {
+  background: rgba(37,211,102,0.25);
+  transform: translateX(8px);
+  box-shadow: 0 8px 25px rgba(37,211,102,0.3);
+}
+
+.whatsapp .icon-wrapper {
+  background: rgba(37,211,102,0.35) !important;
+  color: #25D366 !important;
+  box-shadow: 0 0 20px rgba(37,211,102,0.4);
+}
+
+.whatsapp-symmetric-btn strong {
+  font-size: 15px;
+  color: white;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.whatsapp-symmetric-btn span {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Decorative empty fields (same on both cards) */
+.decorative-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: auto;                
+}
+
+.decorative-fields input,
+.decorative-fields textarea {
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.7);
+  font-family: inherit;
+  font-size: 15px;
+  resize: none;
+}
+
+.decorative-fields input::placeholder,
+.decorative-fields textarea::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .page-title {
+    font-size: 46px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 32px 24px;
+  }
+  .contact-item,
+  .whatsapp-symmetric-btn {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  .icon-wrapper {
+    width: 56px;
+    height: 56px;
+  }
+}
