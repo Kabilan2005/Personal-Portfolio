@@ -28,15 +28,15 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
   transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
-  overflow: hidden;
+  overflow: visible !important;
 }
 
 .skill-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, 
-    rgba(0, 200, 255, 0.08) 0%, 
+  background: linear-gradient(135deg,
+    rgba(0, 200, 255, 0.08) 0%,
     rgba(163, 107, 255, 0.05) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -50,9 +50,10 @@
 .skill-card:hover {
   transform: translateY(-12px);
   border-color: rgba(0, 200, 255, 0.25);
-  box-shadow: 
+  box-shadow:
     0 20px 50px rgba(0, 200, 255, 0.15),
     0 12px 40px rgba(0, 0, 0, 0.6);
+  z-index: 20;
 }
 
 .card-title {
@@ -78,6 +79,71 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.pill {
+  position: relative;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.pill[data-tooltip]::before,
+.pill[data-tooltip]::after {
+  position: fixed !important;
+  left: var(--tooltip-left, 50%);
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 2147483647 !important;
+}
+
+.pill[data-tooltip]::before {
+  content: '';
+  top: var(--tooltip-before-top, -80px);
+  width: 4px;
+  height: 80px;
+  background: linear-gradient(to top, 
+    rgba(0, 200, 255, 0) 0%, 
+    rgba(0, 200, 255, 1) 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 30px rgba(0, 200, 255, 0.9);
+}
+
+.pill[data-tooltip]::after {
+  content: attr(data-tooltip);
+  top: var(--tooltip-top, -220px);
+  width: 360px;
+  padding: 22px 26px;
+  background: rgba(10, 15, 35, 0.98);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(0, 200, 255, 0.6);
+  border-radius: 24px;
+  color: #e0f2ff;
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.8;
+  text-align: center;
+  white-space: pre-line;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(0, 200, 255, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.pill:hover[data-tooltip]::before,
+.pill:hover[data-tooltip]::after,
+.pill:active[data-tooltip]::before,
+.pill:active[data-tooltip]::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pill:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 200, 255, 0.3);
 }
 
 @media (max-width: 900px) {
