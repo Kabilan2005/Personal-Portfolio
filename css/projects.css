@@ -57,7 +57,7 @@
 }
 
 .card-title {
-  font-size: 26px;
+  font-size: 30px;
   margin: 0 0 16px;
   color: var(--neon-purple);
   text-shadow: 0 0 15px rgba(163, 107, 255, 0.4);
@@ -79,11 +79,11 @@
   color: var(--muted);
   line-height: 1.65;
   margin: 18px 0;
-  font-size: 15.8px;
-  hyphens: auto;
-  hyphenate-limit-chars: 6 3 3;
+  font-size: 18px;
+  hyphens: none;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  max-width: 90%;
 }
 
 .github-link {
