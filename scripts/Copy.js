@@ -6,7 +6,6 @@ document.querySelectorAll('[data-copy]').forEach(item => {
     navigator.clipboard.writeText(text).then(() => {
       showToast(`Copied ${text}`);
     }).catch(() => {
-      // Fallback for very old browsers
       const temp = document.createElement('textarea');
       temp.value = text;
       document.body.appendChild(temp);
